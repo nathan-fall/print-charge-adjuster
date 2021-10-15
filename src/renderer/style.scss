@@ -1,0 +1,118 @@
+@import "~bulmaswatch/darkly/_variables.scss";
+@import "~bulma/sass/utilities/_all.sass";
+$section-padding: 1.5rem;
+$dropdown-content-background-color: $white-bis;
+$dropdown-item-color: $black;
+$dropdown-item-hover-background-color: $grey-light;
+$family-sans-serif: -apple-system, blinkMacSystemFont, "Segoe UI",
+  "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+$input-disabled-border-color: $grey-lighter;
+$link: $primary;
+$bulmaswatch-import-font: false;
+@import "~bulma/bulma.sass";
+@import "~buefy/src/scss/buefy.scss";
+@import "~bulmaswatch/darkly/_overrides.scss";
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+.datepicker {
+  .datepicker-table {
+    .datepicker-body {
+      .datepicker-row {
+        .datepicker-cell {
+          &.is-selectable {
+            &:hover:not(.is-selected),
+            &:focus:not(.is-selected) {
+              background-color: $dropdown-item-hover-background-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+html {
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-app-region: drag;
+}
+#app > header {
+  height: 60px;
+  padding-top: 18.5px;
+  position: relative;
+  z-index: 20;
+  box-shadow: #1f2424 0px 5px 20px 0px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+#view > main {
+  height: calc(100vh - 120px);
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+#view > footer {
+  height: 60px;
+  padding-top: calc(28px - 1.25em);
+  padding-left: 3rem;
+  padding-right: 3rem;
+  position: relative;
+  z-index: 20;
+  box-shadow: #1f2424 0px -5px 20px 0px;
+  border-top-color: #5e6d6f;
+  border-top-style: solid;
+  border-top-width: 2px;
+}
+table {
+  background-color: $body-background-color !important;
+  th,
+  td {
+    background-color: $table-background-color !important;
+  }
+  tr.is-selected {
+    td {
+      background-color: $warning !important;
+      color: black !important;
+    }
+  }
+}
+.printer-only {
+  display: none;
+}
+.no-wrap {
+  display: inline-block;
+}
+
+@media print {
+  header {
+    display: none;
+  }
+  main {
+    height: max-content;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+  footer {
+    display: none;
+  }
+  .not_print {
+    display: none;
+  }
+  .printer-only {
+    display: inline;
+  }
+  .container {
+    width: 130mm;
+    font-size: 2.5mm;
+    h1 {
+      font-size: 6mm;
+    }
+    th {
+      background-color: #efefef !important;
+    }
+    td {
+      color: black !important;
+    }
+    tr:nth-child(even) td {
+      background-color: #efefef !important;
+    }
+  }
+}
