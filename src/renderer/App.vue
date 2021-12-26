@@ -9,11 +9,11 @@
 </template>
 
 <script>
-// if (typeof window.localStorage.lastAutoBackup == "undefined") {
-//   window.localStorage.lastAutoBackup = 0;
-// }
-
+import { autoBackup } from "./autoBackup";
 import appHeader from "./components/AppHeader";
+
+let backupTimer = 0;
+
 export default {
   components: { appHeader },
   created: async function () {
@@ -32,45 +32,14 @@ export default {
       }
     });
 
-    // this.$store.dispatch("printjobs/getData");
-    // let promiseTask = this.$store.dispatch("members/getData");
-
-    // if (
-    //   Number(new Date()) - window.localStorage.lastAutoBackup >=
-    //   3 * 24 * 60 * 1000
-    // ) {
-    //   await Promise.all([
-    //     promiseTask,
-    //     this.$store.dispatch("printjobs/backup"),
-    //   ]);
-    //   const backupFileDir = path.join(
-    //     remote.app.getPath("home"),
-    //     "印刷代管理アプリ"
-    //   );
-    //   if (!fs.existsSync(backupFileDir)) {
-    //     fs.mkdirSync(backupFileDir);
-    //   }
-    //   fs.writeFile(
-    //     path.join(
-    //       backupFileDir,
-    //       "auto_backup_" + moment().format("YYYY_MM_DD") + ".json"
-    //     ),
-    //     JSON.stringify({
-    //       printjobs: this.$store.state.printjobs.backupData,
-    //       members: this.$store.state.members.members,
-    //     }),
-    //     (err) => {
-    //       if (err) {
-    //         console.log(
-    //           "定期バックアップの作成中にエラーが発生しました。パソコン担当にお知らせください。" +
-    //             err
-    //         );
-    //         throw err;
-    //       }
-    //       window.localStorage.lastAutoBackup = Number(new Date());
-    //     }
-    //   );
-    // }
+    const backupTimerCallback = () => {
+      autoBackup(this.$store);
+    };
+    backupTimerCallback();
+    backupTimer = setInterval(backupTimerCallback, 60 * 60 * 1000);
+  },
+  beforeDestroy: function () {
+    clearInterval(backupTimer);
   },
 };
 </script>
