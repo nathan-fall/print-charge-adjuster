@@ -6510,16 +6510,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"electron@npm:^15.1.2":
-  version: 15.3.4
-  resolution: "electron@npm:15.3.4"
+"electron@npm:^16.0.5":
+  version: 16.0.5
+  resolution: "electron@npm:16.0.5"
   dependencies:
     "@electron/get": ^1.13.0
     "@types/node": ^14.6.2
     extract-zip: ^1.0.3
   bin:
     electron: cli.js
-  checksum: 439f2a147a611385975eadb31bd9e29faaa2e902c3f2aa5842dcdcb1d2235f9cb4160172c47dca4e27c53cee1151277dbc7841ad13d43b1ada1aa81b2b47f1c2
+  checksum: 5b24d00e165d74d8039ac85646fb5953e3755bd503e0ffb27fe3a72c7f8acf8449fc661f51a1a8b42387e311aa44f161105796e13ed45ace4a3d8e0e586ece38
   languageName: node
   linkType: hard
 
@@ -12752,7 +12752,7 @@ __metadata:
     bulmaswatch: ^0.8.1
     core-js: ^3.6.5
     dexie: ^3.0.3
-    electron: ^15.1.2
+    electron: ^16.0.5
     electron-devtools-installer: ^3.1.0
     eslint: ^6.7.2
     eslint-plugin-prettier: ^3.3.1
