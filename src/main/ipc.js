@@ -4,7 +4,6 @@ import { app, dialog, ipcMain } from "electron";
 import { DateTime } from "luxon";
 
 export const registerIPC = async () => {
-  ipcMain.handle("getProcessArgs", () => process.argv);
   ipcMain.handle("saveBackup", async (event, data, askPath) => {
     let savePath;
     if (askPath) {

@@ -21,21 +21,16 @@ export default {
       e.preventDefault();
     };
 
-    if (
-      (await window.mainProcess.getProcessArgs()).findIndex(
-        (arg) => arg === "--new"
-      ) >= 0 &&
-      this.$route.name !== "ThePrintjobsNew"
-    ) {
-      this.$router.push({ name: "ThePrintjobsNew" });
-    }
-
-    // window.mainProcess.recieveNewArgv((event, argv) => {
-    //   console.log(event, argv);
-    //   if (this.$route.name !== "ThePrintjobsNew") {
-    //     this.$router.push({ name: "ThePrintjobsNew" });
-    //   }
-    // });
+    window.mainProcess.recieveURL((event, url) => {
+      console.log(event, url);
+      url = url.split(":/")[1];
+      if (url === "/printjobs/new") {
+        if (this.$route.name !== "ThePrintjobsNew") {
+          console.log("Moving to /printjobs/new !");
+          this.$router.push({ name: "ThePrintjobsNew" });
+        }
+      }
+    });
 
     // this.$store.dispatch("printjobs/getData");
     // let promiseTask = this.$store.dispatch("members/getData");

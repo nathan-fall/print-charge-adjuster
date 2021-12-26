@@ -48,18 +48,28 @@ async function createWindow() {
 if (!app.requestSingleInstanceLock()) {
   app.quit();
 } else {
-  // app.on("second-instance", (event, argv) => {
   app.on("second-instance", () => {
     // Someone tried to run a second instance, we should focus our window.
     if (win) {
       if (win.isMinimized()) win.restore();
       win.focus();
-      // if (argv.findIndex((arg) => arg === "--new") >= 0) {
-      //  win.webContents.send("recieveNewArgv", argv);
-      // }
     }
   });
 }
+
+// vue.config.js, App.vueと共に
+// "open print-charge-adjuster://printjobs/new"コマンドで/printjobs/newを開く
+app.on("open-url", (_, url) => {
+  if (BrowserWindow.getAllWindows().length === 0) {
+    createWindow();
+  } else {
+    if (win) {
+      if (win.isMinimized()) win.restore();
+      win.focus();
+      win.webContents.send("recieveURL", url);
+    }
+  }
+});
 
 // Quit when all windows are closed.
 app.on("window-all-closed", () => {

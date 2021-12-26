@@ -3,9 +3,8 @@
 import { contextBridge, ipcRenderer } from "electron";
 
 contextBridge.exposeInMainWorld("mainProcess", {
-  getProcessArgs: async () => await ipcRenderer.invoke("getProcessArgs"),
   saveBackup: async (data = "", askPath = false) =>
     await ipcRenderer.invoke("saveBackup", data, askPath),
-  recieveNewArgv: (callback) =>
-    ipcRenderer.on("recieveNewArgv", (event, argv) => callback(event, argv)),
+  recieveURL: (callback) =>
+    ipcRenderer.on("recieveURL", (event, url) => callback(event, url)),
 });

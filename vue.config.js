@@ -16,10 +16,19 @@ module.exports = {
     electronBuilder: {
       builderOptions: {
         productName: "PrintChargeAdjuster",
+        protocols: {
+          name: "PrintChargeAdjuster URL",
+          schemes: ["print-charge-adjuster"],
+        },
       },
       mainProcessFile: "src/main/index.js",
       rendererProcessFile: "src/renderer/index.js",
       preload: "src/renderer/preload.js",
+      // fileAssociations: {
+      //   protocols: {
+
+      //   }
+      // }
     },
   },
 };

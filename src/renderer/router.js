@@ -42,7 +42,7 @@ const routes = [
   },
   {
     path: "*",
-    redirect: "/printjobs",
+    redirect: "/printjobs/new",
   },
 ];
 

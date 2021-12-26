@@ -1,24 +1,39 @@
 # print-charge-adjuster
 
-## Project setup
+## コマンド
+
+### ライブラリインストール
+
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### 開発用に起動
+
 ```
 yarn serve
 ```
 
-### Compiles and minifies for production
+### コンパイルしてインストーラを出力(`/dist_electron`に出力)
+
 ```
 yarn build
 ```
 
-### Lints and fixes files
+### コードをきれいに整形する
+
 ```
 yarn lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## 仕様
+
+### コマンドラインからの起動　(Ver1.2 から)
+
+```zsh
+open print-charge-adjuster://printjobs/new
+```
+
+ターミナルやシェルスクリプトから上記のコマンドを呼ぶことで印刷代登録の画面が出る
+
+Ver1.1 までは引数を与えてアプリ自体を`open`していたが、Ver1.2 からはカスタム URL スキームに変更
